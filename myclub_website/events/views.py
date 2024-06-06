@@ -5,7 +5,7 @@ from datetime import datetime
 from django.shortcuts import render
 
 
-def home(request, year, month):
+def home(request, year=datetime.now().year, month=datetime.now().strftime('%B')):
     name = "John"
     month = month.title()
     month_number = list(calendar.month_name).index(month)
@@ -19,7 +19,7 @@ def home(request, year, month):
     time = now.strftime('%H:%M:%S %p')
     return render(
         request,
-        'home.html',
+        'events/home.html',
         {
             'name': name,
             'year': year,
